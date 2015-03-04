@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+	
+<hibernate-mapping package="com.ll.learn.hibernate.c_set" >
+
+    <class name="Member" table="t_member">
+    	<id name="id" type="int" >
+    		<generator class="native"/>
+    	</id>
+        <property name="name" type="string" length="20"/>
+        <property name="phone" type="string" length="11"/>
+        <!-- 
+        	set集合  通过主外键关系关联一张表 指定table名称
+        	key 指的就是外键 
+        	element 表示字段
+        -->
+        <set name="addressSet" table="t_user_address" order-by="address asc">
+        	<key column="user_id"/>
+        	<element column="address" type="string" length="256"/>
+        </set>
+        
+        <!--
+        	list映射要指定idx 
+         -->
+        <list name="addressList" table="t_user_address_list">
+        	<key column="user_id"/>
+        	<list-index column="idx"/>
+        	<element column="address" type="string"/>
+        </list>
+        
+        <!-- array数组 -->
+        <array name="addressArray" table="t_user_address_array">
+        	<key column="user_id"/>
+        	<list-index column="idx"/>
+        	<element column="address" type="string"/>
+        </array>
+        
+        <!-- map -->
+        <map name="addressMap" table="t_user_address_map">
+        	<key column="user_id"/>
+        	<map-key column="key_" type="string"/>
+        	<element column="address" type="string"/>
+        </map>
+        
+        <bag name="addressBag" table="t_user_address_bag">
+        	<key column="user_id"/>
+        	<element column="address" type="string"/>
+        </bag>
+        
+	</class>
+
+</hibernate-mapping>
