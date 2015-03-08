@@ -30,7 +30,7 @@ public class App {
 			session = sessionFactory.openSession();
 			session.getTransaction().begin();
 			
-			Department department = new Department();
+		/*	Department department = new Department();
 			department.setName("开发部");
 			
 			Employee employee1 = new Employee();
@@ -39,7 +39,7 @@ public class App {
 
 			Employee employee2 = new Employee();
 			employee2.setName("考考");
-			employee2.setDepartment(department);
+			employee2.setDepartment(department);*/
 			
 			//第一种
 //			session.save(department);			
@@ -65,10 +65,18 @@ public class App {
 //			Hibernate: insert into t_department (name) values (?)
 			
 			//第四种
-			session.save(employee1);
+			/*session.save(employee1);
 			session.save(employee2);
-			session.save(department);
+			session.save(department);*/
 			
+			/**
+			 * save()        临时状态—>持久化状态  ？？（疑问当ID部位null时会是怎么样的）
+			 */
+			Department d = new Department();
+			d.setId(111);
+			d.setName("测试部门");
+			
+			session.saveOrUpdate(d);
 			
 			session.getTransaction().commit();
 			
