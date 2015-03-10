@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+	
+<hibernate-mapping package="com.ll.learn.hibernate.g_oneToOne_pk" >
+
+    <class name="IDCard" table="t_id_card_pk">
+    	<id name="id">
+    		<!-- 基于主键映射   该主键是对应哪个外键来的  -->
+    		<generator class="foreign">
+    			<param name="property">person</param>
+    		</generator>
+    	</id>
+       
+        <property name="cardNo" column="card_no"/>
+        <!-- 
+        	constrained 表示存在一个外键约束
+        -->
+		<one-to-one name="person" class="Person" constrained="true"/>
+	</class>
+
+</hibernate-mapping>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+	
+<hibernate-mapping package="com.ll.learn.hibernate.g_oneToOne" >
+
+    <class name="IDCard" table="t_id_card">
+    	<id name="id">
+    		<generator class="native"/>
+    	</id>
+       
+        <property name="cardNo" column="card_no"/>
+        <!-- 
+        	基于外键方式
+        -->
+        <many-to-one name="person" column="person_id" class="Person" unique="true"/>
+	</class>
+
+</hibernate-mapping>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+	
+<hibernate-mapping package="com.ll.learn.hibernate.g_oneToOne_pk" >
+
+    <class name="Person" table="t_person_pk">
+    	<id name="id">
+    		<generator class="native"/>
+    	</id>
+       
+        <property name="name"/>
+        <!-- 
+        	基于主键
+        -->
+		<one-to-one name="idCard" class="IDCard"/>
+	</class>
+
+</hibernate-mapping>
