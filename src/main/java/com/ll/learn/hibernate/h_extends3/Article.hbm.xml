@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+	
+<hibernate-mapping package="com.ll.learn.hibernate.h_extends3" >
+
+	<!--
+		继承结构映射：每个子类一张表
+		abstract属性指明父类是抽象类，没表
+	 -->
+    <class name="Article" abstract="true">
+    	<id name="id">
+    		<!-- 指定生成策略 -->
+    		<generator class="uuid2">
+    		</generator>
+    	</id>
+       
+        <property name="title"/>
+        <property name="content" type="text" length="10000"/>
+        <property name="postDate" column="post_date" type="timestamp"/>
+
+		<!-- 子类 -->
+		<union-subclass name="Topic" table="t_topic3">
+			<property name="type"/>
+		</union-subclass>
+        
+        <union-subclass name="Reply" table="t_reply3">
+			<property name="floor"/>
+		</union-subclass>
+        
+	</class>
+
+</hibernate-mapping>

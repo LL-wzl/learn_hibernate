@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+	
+<hibernate-mapping package="com.ll.learn.hibernate.h_extends1" >
+
+	<!--discriminator-value属性：用于鉴定是哪个类的值，这个值就是这个类。如果不写默认为类的全限定名  -->
+    <class name="Article" table="t_article" discriminator-value="Article">
+    	<id name="id">
+    		<generator class="native"/>
+    	</id>
+       
+       <!-- 用于区别不同类之间的值 -->
+        <discriminator type="string" column="class_"></discriminator>
+       
+        <property name="title"/>
+        <property name="content" type="text" length="10000"/>
+        <property name="postDate" column="post_date" type="timestamp"/>
+
+		<!-- 子类 -->        
+        <subclass name="Topic" discriminator-value="Topic">
+        	<property name="type"></property>
+        </subclass>
+        
+        <subclass name="Reply" discriminator-value="Reply">
+        	<property name="floor"></property>
+        </subclass>
+        
+	</class>
+
+</hibernate-mapping>
