@@ -24,6 +24,19 @@
 		<property name="show_sql">true</property>
 		<property name="hibernate.format_sql">false</property>		
 		
+		<!-- c3po连接池配置 -->
+		<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
+		<property name="hibernate.c3p0.max_size">100</property>
+		<property name="hibernate.c3p0.min_size">5</property>
+		<property name="hibernate.c3p0.timeout">50000</property>
+		<!-- 不操作的时候能够存活多长时间 -->
+		<property name="hibernate.c3p0.max_statements">100</property>
+		<!-- 设定的时间间隔去自动校验这些链接对象并销毁timeout的 -->
+		<property name="hibernate.c3p0.idle_test_period">3000</property>
+		<property name="hibernate.c3p0.acquire_increment">2</property>
+		<!-- 是否验证，检查连接 -->  
+    	<property name="hibernate.c3p0.validate">false</property>  
+		
 		<!-- <mapping resource="com/ll/learn/hibernate/a_xml/User.hbm.xml"/>
 		<mapping class="com.ll.learn.hibernate.b_annotction.Role"/> -->
 		<!-- <class-cache
