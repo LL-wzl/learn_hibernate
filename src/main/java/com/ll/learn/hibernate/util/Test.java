@@ -26,12 +26,17 @@ class C3 extends C2{
 	}
 	
 	public C3(String c3){
+		super(c3);
 		System.out.println(c3);
 	}
 	
 }
 
-
+/**
+ * super  就是指用父类的那个类    不写就是没有参数的构造方法
+ * @author Administrator
+ *
+ */
 public class Test {
 
 	public static void main(String[] args) {

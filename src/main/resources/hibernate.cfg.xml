@@ -37,6 +37,23 @@
 		<!-- 是否验证，检查连接 -->  
     	<property name="hibernate.c3p0.validate">false</property>  
 		
+		
+		<!-- 二级缓存 -->
+		<property name="hibernate.cache.use_second_level_cache">true</property>
+		<!-- <property name="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</property> -->
+		<!--  -->
+		<property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+		
+		<!-- 查询条件缓存 -->
+		<property name="hibernate.cache.use_query_cache">true</property>
+		
+		<!-- 类的缓存 -->
+		<class-cache usage="read-write" class="com.ll.learn.hibernate.i_cache.Employee"/>
+		<class-cache usage="read-write" class="com.ll.learn.hibernate.i_cache.Department"/>
+
+		<!-- 集合的缓存 -->
+		<collection-cache usage="read-write" collection="com.ll.learn.hibernate.i_cache.Department.employees"/>
+		
 		<!-- <mapping resource="com/ll/learn/hibernate/a_xml/User.hbm.xml"/>
 		<mapping class="com.ll.learn.hibernate.b_annotction.Role"/> -->
 		<!-- <class-cache
